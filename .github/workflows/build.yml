@@ -22,6 +22,7 @@ jobs:
       with:
         path: |
           ~/.cargo
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
     - name: Install
       run: |
