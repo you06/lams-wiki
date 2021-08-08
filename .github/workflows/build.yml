@@ -16,12 +16,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Cache Cargo dependencies
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.cargo
+
     - name: Install
       run: |
         make prepare
+
     - name: Build
       run: |
         make doc
+
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
